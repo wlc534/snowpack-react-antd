@@ -1,3 +1,13 @@
 {
-  "extends": "@snowpack/app-scripts-react/babel.config.json"
+  "extends": "@snowpack/app-scripts-react/babel.config.json",
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd11",
+        "libraryDirectory": "es",
+        "style": "css"
+      }
+    ]
+]
 }

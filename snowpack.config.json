@@ -1,4 +1,10 @@
 {
   "extends": "@snowpack/app-scripts-react",
-  "plugins": []
+  "plugins": [],
+  "buildOptions":{
+    "baseUrl":"/"
+  },
+  "proxy": {
+    "/api": "https://cnodejs.org/api"
+  }
 }
