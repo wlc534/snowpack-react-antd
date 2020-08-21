@@ -9,6 +9,7 @@ import {
   Input,
   DatePicker,
   List,
+  Space,
   Avatar,
   Row,
   Col,
@@ -121,9 +122,30 @@ function App() {
   };
   return (
     <div className="App">
-      <Row>
-        <Col span={12}>
-          <Select value={tab} style={{ width: 120 }} onChange={handleChange}>
+      <Row gutter={[16, 16]}>
+        <Col span={4}>
+           <Zmage src={'https://www.snowpack.dev/assets/snowpack-logo-black.png'}  alt="snowpackLogo" />
+        </Col>
+        <Col span={4}>
+           <Zmage src={logo}  alt="ReactLogo" />
+        </Col>
+        <Col span={4}>
+           <Zmage src={'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'}  alt="antdLogo" />
+        </Col>
+        <Col span={4}>
+           <Zmage src={'https://echarts-www.cdn.bcebos.com/zh/images/favicon.png?_v_=20200710_1'}  alt="echartsLogo" />
+           {/* <Zmage src={'https://github.com/apache/incubator-echarts/raw/master/asset/logo.png?raw=true'}  alt="echartsLogo" /> */}
+        </Col>
+        <Col span={4}>
+           <Zmage src={'https://ahooks.js.org/logo.svg'}  alt="ahooksLogo" />
+        </Col>
+        <Col span={4}>
+           <Zmage src={'https://static2.cnodejs.org/public/images/cnode_icon_32.png'}  alt="cnodeLogo" />
+        </Col>
+      </Row>
+      <Row align='center' >
+      <Space>
+      <Select value={tab} style={{ width: 120 }} onChange={handleChange}>
             <Option value="all">全部</Option>
             {Object.entries(optionMap).map(([key, value], index) => (
               <Option value={key} key={index}>
@@ -131,12 +153,13 @@ function App() {
               </Option>
             ))}
           </Select>
-        </Col>
-        <Col span={12}>
           <Button type="primary" icon={<RedoOutlined />} onClick={run}>
             reload
           </Button>
-        </Col>
+
+      </Space>
+      
+       
       </Row>
 
       <List
@@ -151,8 +174,8 @@ function App() {
               avatar={
                 <Avatar
                   src={
-                    // 'https://pic1.zhimg.com/v2-c5c95a5aa3ddf2e4ea1880295827af7c_im.jpg'
-                    item?.author?.avatar_url
+                    'https://pic1.zhimg.com/v2-c5c95a5aa3ddf2e4ea1880295827af7c_im.jpg'
+                    // item?.author?.avatar_url
                   }
                 />
               }

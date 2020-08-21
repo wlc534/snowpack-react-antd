@@ -32,6 +32,9 @@
 .App-content{
   text-align: left;
 }
+img{
+  height: 50px;
+}
 
 @keyframes App-logo-spin {
   from {
