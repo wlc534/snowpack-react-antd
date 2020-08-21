@@ -4,17 +4,30 @@ import ReactZmage from 'react-zmage';
 import logo from './logo.svg';
 import './App.css';
 import styles from './App.module.css';
-import Button from 'antd/es/button';
-import Input from 'antd/es/input';
-import DatePicker from 'antd/es/date-picker';
-import List from 'antd/es/list';
-import Avatar from 'antd/es/avatar';
-import Row from 'antd/es/row';
-import Col from 'antd/es/col';
-import Select from 'antd/es/select';
-import Collapse from 'antd/es/collapse';
-import Tag from 'antd/es/tag';
-import message from 'antd/es/message';
+import {
+  Button,
+  Input,
+  DatePicker,
+  List,
+  Avatar,
+  Row,
+  Col,
+  Select,
+  Collapse,
+  Tag,
+  message,
+} from 'antd';
+// import Button from 'antd/es/button';
+// import Input from 'antd/es/input';
+// import DatePicker from 'antd/es/date-picker';
+// import List from 'antd/es/list';
+// import Avatar from 'antd/es/avatar';
+// import Row from 'antd/es/row';
+// import Col from 'antd/es/col';
+// import Select from 'antd/es/select';
+// import Collapse from 'antd/es/collapse';
+// import Tag from 'antd/es/tag';
+// import message from 'antd/es/message';
 import { BugOutlined, RedoOutlined } from '@ant-design/icons';
 import ReactEcharts from 'echarts-for-react';
 import moment from 'moment';
@@ -68,43 +81,39 @@ function App() {
       tooltip: {},
       legend: {},
       dataset: {
-          // 提供一份数据。
-          source: [
-              ['count',"访问量", "回复量",],
-              ['问答', 5, 20],
-              ['分享', 15, 25],
-              ['招聘', 15, 25],
-              ['精华', 15, 25],
-              ['测试', 15, 25],
-            
-          ]
+        // 提供一份数据。
+        source: [
+          ['count', '访问量', '回复量'],
+          ['问答', 5, 20],
+          ['分享', 15, 25],
+          ['招聘', 15, 25],
+          ['精华', 15, 25],
+          ['测试', 15, 25],
+        ],
       },
       // 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
-      xAxis: {type: 'category'},
+      xAxis: { type: 'category' },
       // 声明一个 Y 轴，数值轴。
       yAxis: {},
       // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
-      series: [
-          {type: 'bar'},
-          {type: 'bar'},
-        
+      series: [{ type: 'bar' }, { type: 'bar' }],
+      color: [
+        '#1890FF',
+        '#41D9C7',
+        '#2FC25B',
+        '#FACC14',
+        '#E6965C',
+        '#223273',
+        '#7564CC',
+        '#8543E0',
+        '#5C8EE6',
+        '#13C2C2',
+        '#5CA3E6',
+        '#3436C7',
+        '#B381E6',
+        '#F04864',
+        '#D598D9',
       ],
-     color:[
-          '#1890FF',
-          '#41D9C7',
-          '#2FC25B',
-          '#FACC14',
-          '#E6965C',
-          '#223273',
-          '#7564CC',
-          '#8543E0',
-          '#5C8EE6',
-          '#13C2C2',
-          '#5CA3E6',
-          '#3436C7',
-          '#B381E6',
-          '#F04864',
-          '#D598D9']
     };
   };
   const handleChange = (value) => {
