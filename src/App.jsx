@@ -137,7 +137,7 @@ function App() {
            {/* <Zmage src={'https://github.com/apache/incubator-echarts/raw/master/asset/logo.png?raw=true'}  alt="echartsLogo" /> */}
         </Col>
         <Col span={4}>
-           <Zmage src={'https://ahooks.js.org/logo.svg'}  alt="ahooksLogo" />
+           <Zmage src={'https://ahooks.js.org/simple-logo.svg'}  alt="ahooksLogo" />
         </Col>
         <Col span={4}>
            <Zmage src={'https://static2.cnodejs.org/public/images/cnode_icon_32.png'}  alt="cnodeLogo" />
