@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRequest } from 'ahooks';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ReactZmage from 'react-zmage';
 import logo from './logo.svg';
 import './App.css';
@@ -34,7 +33,6 @@ import {
 import { BugOutlined, RedoOutlined } from '@ant-design/icons';
 import ReactEcharts from 'echarts-for-react';
 import moment from 'moment';
-import AppX from './AppX';
 
 // import {Button} from 'antd';
 // import 'antd/dist/antd.css';
@@ -57,7 +55,7 @@ const optionMap = {
   dev: { name: '测试', color: 'purple' },
 };
 
-function AppDemo() {
+function AppX() {
   const [tab, setTab] = useState('all');
   const {
     data: { data: dataSource = [] } = {},
@@ -77,102 +75,12 @@ function AppDemo() {
     run();
   }, [tab]);
 
-  const getOption = () => {
-    return {
-      title: {
-        text: 'cnode不同类型数据可视化',
-      },
-      tooltip: {},
-      legend: {},
-      dataset: {
-        // 提供一份数据。
-        source: [
-          ['count', '访问量', '回复量'],
-          ['问答', 5, 20],
-          ['分享', 15, 25],
-          ['招聘', 15, 25],
-          ['精华', 15, 25],
-          ['测试', 15, 25],
-        ],
-      },
-      // 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
-      xAxis: { type: 'category' },
-      // 声明一个 Y 轴，数值轴。
-      yAxis: {},
-      // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
-      series: [{ type: 'bar' }, { type: 'bar' }],
-      color: [
-        '#1890FF',
-        '#41D9C7',
-        '#2FC25B',
-        '#FACC14',
-        '#E6965C',
-        '#223273',
-        '#7564CC',
-        '#8543E0',
-        '#5C8EE6',
-        '#13C2C2',
-        '#5CA3E6',
-        '#3436C7',
-        '#B381E6',
-        '#F04864',
-        '#D598D9',
-      ],
-    };
-  };
   const handleChange = (value) => {
     setTab(value);
   };
   return (
     <>
       <div className="App">
-        <Row gutter={[16, 16]}>
-          <Col span={4}>
-            <Zmage
-              className="logo-img"
-              src={'https://www.snowpack.dev/assets/snowpack-logo-black.png'}
-              alt="snowpackLogo"
-            />
-          </Col>
-          <Col span={4}>
-            <Zmage className="logo-img" src={logo} alt="ReactLogo" />
-          </Col>
-          <Col span={4}>
-            <Zmage
-              className="logo-img"
-              src={
-                'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
-              }
-              alt="antdLogo"
-            />
-          </Col>
-          <Col span={4}>
-            <Zmage
-              className="logo-img"
-              src={
-                'https://echarts-www.cdn.bcebos.com/zh/images/favicon.png?_v_=20200710_1'
-              }
-              alt="echartsLogo"
-            />
-            {/* <Zmage src={'https://github.com/apache/incubator-echarts/raw/master/asset/logo.png?raw=true'}  alt="echartsLogo" /> */}
-          </Col>
-          <Col span={4}>
-            <Zmage
-              className="logo-img"
-              src={'https://ahooks.js.org/simple-logo.svg'}
-              alt="ahooksLogo"
-            />
-          </Col>
-          <Col span={4}>
-            <Zmage
-              className="logo-img"
-              src={
-                'https://static2.cnodejs.org/public/images/cnode_icon_32.png'
-              }
-              alt="cnodeLogo"
-            />
-          </Col>
-        </Row>
         <Row align="center">
           <Space>
             <Select value={tab} style={{ width: 120 }} onChange={handleChange}>
@@ -188,7 +96,6 @@ function AppDemo() {
             </Button>
           </Space>
         </Row>
-        <ReactEcharts option={getOption()} />
         <List
           className={styles.appList}
           bordered
@@ -242,41 +149,9 @@ function AppDemo() {
             </List.Item>
           )}
         />
-
-        {/* <DatePicker/> */}
-        {/* 
-      <Input/>
-      <DatePicker/>
-      <p>
-        <Button onClick={() => run()}><RedoOutlined /></Button>
-      </p>
-      <div className=''>
-
-      </div>
-     
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <ReactEcharts.default option={getOption()} /> */}
-
-        {/* <Zmage src="https://www.wey.com/event/2020/0724/p01/pc/images/pic0_2.jpg" /> */}
       </div>
     </>
   );
 }
 
-export default function App() {
-  return (
-    <>
-      <BackTop />
-      <Router>
-        <Switch>
-          <Route path="/x">
-            <AppX />
-          </Route>
-          <Route path="/">
-            <AppDemo />
-          </Route>
-        </Switch>
-      </Router>
-    </>
-  );
-}
+export default AppX;
