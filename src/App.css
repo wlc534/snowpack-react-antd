@@ -33,8 +33,13 @@
   text-align: left;
 }
 img{
-  height: 50px;
+  width: 100%;
 }
+.logo-img{
+  height: 50px;
+  width: auto;
+}
+
 
 @keyframes App-logo-spin {
   from {

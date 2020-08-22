@@ -17,6 +17,7 @@ import {
   Collapse,
   Tag,
   message,
+  BackTop,
 } from 'antd';
 // import Button from 'antd/es/button';
 // import Input from 'antd/es/input';
@@ -121,103 +122,128 @@ function App() {
     setTab(value);
   };
   return (
-    <div className="App">
-      <Row gutter={[16, 16]}>
-        <Col span={4}>
-           <Zmage src={'https://www.snowpack.dev/assets/snowpack-logo-black.png'}  alt="snowpackLogo" />
-        </Col>
-        <Col span={4}>
-           <Zmage src={logo}  alt="ReactLogo" />
-        </Col>
-        <Col span={4}>
-           <Zmage src={'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'}  alt="antdLogo" />
-        </Col>
-        <Col span={4}>
-           <Zmage src={'https://echarts-www.cdn.bcebos.com/zh/images/favicon.png?_v_=20200710_1'}  alt="echartsLogo" />
-           {/* <Zmage src={'https://github.com/apache/incubator-echarts/raw/master/asset/logo.png?raw=true'}  alt="echartsLogo" /> */}
-        </Col>
-        <Col span={4}>
-           <Zmage src={'https://ahooks.js.org/simple-logo.svg'}  alt="ahooksLogo" />
-        </Col>
-        <Col span={4}>
-           <Zmage src={'https://static2.cnodejs.org/public/images/cnode_icon_32.png'}  alt="cnodeLogo" />
-        </Col>
-      </Row>
-      <Row align='center' >
-      <Space>
-      <Select value={tab} style={{ width: 120 }} onChange={handleChange}>
-            <Option value="all">全部</Option>
-            {Object.entries(optionMap).map(([key, value], index) => (
-              <Option value={key} key={index}>
-                {value.name}
-              </Option>
-            ))}
-          </Select>
-          <Button type="primary" icon={<RedoOutlined />} onClick={run}>
-            reload
-          </Button>
-
-      </Space>
-      
-       
-      </Row>
-
-      <List
-        className={styles.appList}
-        bordered
-        loading={loading}
-        itemLayout="horizontal"
-        dataSource={dataSource}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={
-                <Avatar
-                  src={
-                    'https://pic1.zhimg.com/v2-c5c95a5aa3ddf2e4ea1880295827af7c_im.jpg'
-                    // item?.author?.avatar_url
-                  }
-                />
-              }
-              title={
-                <a href={`https://cnodejs.org/topic/${item.id}`}>
-                  {item?.title}
-                </a>
-              }
-              description={
-                <Collapse>
-                  <Panel
-                    header={
-                      <>
-                        <span style={{ marginRight: 8 }}>文章类型:</span>
-                        <Tag color={optionMap[item?.tab]?.color}>
-                          {optionMap[item?.tab]?.name}
-                        </Tag>
-                        <span style={{ marginRight: 8 }}>回复量/访问量:</span>
-                        <Tag>{`${item?.reply_count}/${item?.visit_count}`}</Tag>
-                        <span style={{ marginRight: 8 }}>创建时间:</span>
-                        <Tag>
-                          {moment(item?.create_at).format(
-                            'YYYY-MM-DD HH:mm:ss',
-                          )}
-                        </Tag>
-                      </>
-                    }
-                  >
-                    <div
-                      className={styles.appContent}
-                      dangerouslySetInnerHTML={{ __html: item?.content }}
-                    />
-                  </Panel>
-                </Collapse>
-              }
+    <>
+      <BackTop />
+      <div className="App">
+        <Row gutter={[16, 16]}>
+          <Col span={4}>
+            <Zmage
+              className="logo-img"
+              src={'https://www.snowpack.dev/assets/snowpack-logo-black.png'}
+              alt="snowpackLogo"
             />
-          </List.Item>
-        )}
-      />
+          </Col>
+          <Col span={4}>
+            <Zmage className="logo-img" src={logo} alt="ReactLogo" />
+          </Col>
+          <Col span={4}>
+            <Zmage
+              className="logo-img"
+              src={
+                'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+              }
+              alt="antdLogo"
+            />
+          </Col>
+          <Col span={4}>
+            <Zmage
+              className="logo-img"
+              src={
+                'https://echarts-www.cdn.bcebos.com/zh/images/favicon.png?_v_=20200710_1'
+              }
+              alt="echartsLogo"
+            />
+            {/* <Zmage src={'https://github.com/apache/incubator-echarts/raw/master/asset/logo.png?raw=true'}  alt="echartsLogo" /> */}
+          </Col>
+          <Col span={4}>
+            <Zmage
+              className="logo-img"
+              src={'https://ahooks.js.org/simple-logo.svg'}
+              alt="ahooksLogo"
+            />
+          </Col>
+          <Col span={4}>
+            <Zmage
+              className="logo-img"
+              src={
+                'https://static2.cnodejs.org/public/images/cnode_icon_32.png'
+              }
+              alt="cnodeLogo"
+            />
+          </Col>
+        </Row>
+        <Row align="center">
+          <Space>
+            <Select value={tab} style={{ width: 120 }} onChange={handleChange}>
+              <Option value="all">全部</Option>
+              {Object.entries(optionMap).map(([key, value], index) => (
+                <Option value={key} key={index}>
+                  {value.name}
+                </Option>
+              ))}
+            </Select>
+            <Button type="primary" icon={<RedoOutlined />} onClick={run}>
+              reload
+            </Button>
+          </Space>
+        </Row>
+        <ReactEcharts option={getOption()} />
+        <List
+          className={styles.appList}
+          bordered
+          loading={loading}
+          itemLayout="horizontal"
+          dataSource={dataSource}
+          renderItem={(item) => (
+            <List.Item>
+              <List.Item.Meta
+                avatar={
+                  <Avatar
+                    src={
+                      // 'https://pic1.zhimg.com/v2-c5c95a5aa3ddf2e4ea1880295827af7c_im.jpg'
+                      item?.author?.avatar_url
+                    }
+                  />
+                }
+                title={
+                  <a href={`https://cnodejs.org/topic/${item.id}`}>
+                    {item?.title}
+                  </a>
+                }
+                description={
+                  <Collapse>
+                    <Panel
+                      header={
+                        <>
+                          <span style={{ marginRight: 8 }}>文章类型:</span>
+                          <Tag color={optionMap[item?.tab]?.color}>
+                            {optionMap[item?.tab]?.name}
+                          </Tag>
+                          <span style={{ marginRight: 8 }}>回复量/访问量:</span>
+                          <Tag>{`${item?.reply_count}/${item?.visit_count}`}</Tag>
+                          <span style={{ marginRight: 8 }}>创建时间:</span>
+                          <Tag>
+                            {moment(item?.create_at).format(
+                              'YYYY-MM-DD HH:mm:ss',
+                            )}
+                          </Tag>
+                        </>
+                      }
+                    >
+                      <div
+                        className={styles.appContent}
+                        dangerouslySetInnerHTML={{ __html: item?.content }}
+                      />
+                    </Panel>
+                  </Collapse>
+                }
+              />
+            </List.Item>
+          )}
+        />
 
-      {/* <DatePicker/> */}
-      {/* 
+        {/* <DatePicker/> */}
+        {/* 
       <Input/>
       <DatePicker/>
       <p>
@@ -228,10 +254,11 @@ function App() {
       </div>
      
       {/* <img src={logo} className="App-logo" alt="logo" /> */}
-      {/* <ReactEcharts.default option={getOption()} /> */}
-      <ReactEcharts option={getOption()} />
-      {/* <Zmage src="https://www.wey.com/event/2020/0724/p01/pc/images/pic0_2.jpg" /> */}
-    </div>
+        {/* <ReactEcharts.default option={getOption()} /> */}
+
+        {/* <Zmage src="https://www.wey.com/event/2020/0724/p01/pc/images/pic0_2.jpg" /> */}
+      </div>
+    </>
   );
 }
 
