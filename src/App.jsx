@@ -19,6 +19,7 @@ import {
   Tag,
   message,
   BackTop,
+  Image
 } from 'antd';
 // import Button from 'antd/es/button';
 // import Input from 'antd/es/input';
