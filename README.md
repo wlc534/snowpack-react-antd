@@ -23,6 +23,9 @@
 
 > 📝 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
 
+## 相关
+
+[vite-react-antd](https://github.com/wlc534/vite-react-antd)
 
 ## Available Scripts
 
